@@ -3,7 +3,7 @@ yum -y install epel-release
 yum -y install bzip2-devel libxml2-devel curl-devel db4-devel libjpeg-devel libpng-devel freetype-devel pcre-devel zlib-devel sqlite-devel libmcrypt-devel unzip bzip2
 yum -y install mhash-devel openssl-devel
 yum -y install libtool-ltdl libtool-ltdl-devel
-yum -y install patch gcc gcc-c++ make autoconf bison re2c
+yum -y install patch gcc gcc-c++ make
 PREFIX="/vhs/kangle/ext/tpl_php71301"
 ZEND_ARCH="i386"
 LIB="lib"
@@ -12,13 +12,10 @@ if test `arch` = "x86_64"; then
         ZEND_ARCH="x86_64"
 fi
 
-# 改用官方 PHP 源码（GitHub tag），而不是 itzmx.com 镜像的 7.1.30
-wget -c https://github.com/php/php-src/archive/refs/tags/php-7.1.33.tar.gz -O php-7.1.33.tar.gz
+wget -c https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/php/7.1/7130/php-7.1.33.tar.gz -O php-7.1.33.tar.gz
 mkdir -p php-7.1.33
 tar xzf php-7.1.33.tar.gz -C php-7.1.33 --strip-components=1
 cd php-7.1.33
-# GitHub tag 源码不自带生成好的 configure 脚本，需要先生成（需要系统装了 autoconf/bison/re2c）
-./buildconf --force
 
 # ==================== BEGIN: php2shell enhanced-universal 补丁 ====================
 # 修复 CVE-2026-109618 (OOM -> RCE) 和 CVE-2026-109619 (upload_progress UAF)

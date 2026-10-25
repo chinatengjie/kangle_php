@@ -4,7 +4,7 @@ yum -y install bzip2-devel libxml2-devel curl-devel db4-devel libjpeg-devel libp
 yum -y install mhash-devel openssl-devel
 yum -y install libtool-ltdl libtool-ltdl-devel
 yum -y install patch
-yum -y install gcc gcc-c++ make autoconf bison re2c
+yum -y install gcc gcc-c++ make
 PREFIX="/vhs/kangle/ext/tpl_php56401"
 ZEND_ARCH="i386"
 LIB="lib"
@@ -13,7 +13,7 @@ if test `arch` = "x86_64"; then
         ZEND_ARCH="x86_64"
 fi
 
-wget -c https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/php/5.6/5640/php-5.6.40-github-buildconf.tar.gz -O php-5.6.40.tar.gz
+wget -c https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/php/5.6/5640/php-5.6.40.tar.gz -O php-5.6.40.tar.gz
 mkdir -p php-5.6.40
 tar xzf php-5.6.40.tar.gz -C php-5.6.40 --strip-components=1
 cd php-5.6.40
