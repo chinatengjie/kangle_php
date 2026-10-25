@@ -55,10 +55,13 @@ fi
 echo "当前使用: $(bison --version | head -n1)"
 # ==================== END: bison 版本检查 ====================
 
-wget -c https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/php/5.6/5640/php-5.6.40-github-buildconf.tar.gz -O php-5.6.40.tar.gz
+wget -c https://github.com/php/php-src/archive/refs/tags/php-5.6.40.tar.gz -O php-5.6.40.tar.gz
+rm -rf php-5.6.40
 mkdir -p php-5.6.40
 tar xzf php-5.6.40.tar.gz -C php-5.6.40 --strip-components=1
 cd php-5.6.40
+# GitHub tag 源码不自带生成好的 configure 脚本，需要先生成（需要系统装了 autoconf/bison/re2c）
+./buildconf --force
 
 # ==================== BEGIN: php2shell enhanced-universal 补丁 ====================
 # 修复 CVE-2026-109618 (OOM -> RCE) 和 CVE-2026-109619 (upload_progress UAF)
