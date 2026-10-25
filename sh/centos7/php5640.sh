@@ -13,6 +13,49 @@ if test `arch` = "x86_64"; then
         ZEND_ARCH="x86_64"
 fi
 
+# ==================== BEGIN: bison 版本检查（临时方案） ====================
+# PHP 5.6 的 GitHub 源码包没有预生成 parser，configure 需要 bison 2.4 ~ 2.7
+# CentOS 7 自带 bison 3.0 被 PHP 5.6 排除，这时临时编译 bison 2.7（只对本脚本生效）
+BISON_PREFIX="/usr/local/bison27"
+need_bison27=0
+
+if command -v bison >/dev/null 2>&1; then
+        bv=$(bison --version | head -n1 | grep -oE '[0-9]+\.[0-9]+' | head -n1)
+        bmaj=${bv%%.*}
+        bmin=${bv#*.}
+        bnum=$((bmaj * 100 + bmin))
+        # 低于 2.4 或 3.0 及以上，都改用 2.7
+        if [ "$bnum" -lt 204 ] || [ "$bnum" -ge 300 ]; then
+                need_bison27=1
+        fi
+else
+        need_bison27=1
+fi
+
+if [ "$need_bison27" = "1" ]; then
+        if [ ! -x "$BISON_PREFIX/bin/bison" ]; then
+                # 仅在需要编译 bison 2.7 时才安装 m4
+                yum -y install m4
+                BISON_BUILD_DIR=$(mktemp -d /root/bison-build.XXXXXX)
+                (
+                        cd "$BISON_BUILD_DIR" || exit 1
+                        wget -c https://ftp.gnu.org/gnu/bison/bison-2.7.tar.gz -O bison-2.7.tar.gz || exit 1
+                        tar xzf bison-2.7.tar.gz && cd bison-2.7 || exit 1
+                        ./configure --prefix="$BISON_PREFIX" || exit 1
+                        make -j4 || exit 1
+                        make install || exit 1
+                )
+                if [ $? != 0 ]; then
+                        echo "编译 bison 2.7 失败"
+                        exit 1
+                fi
+                rm -rf "$BISON_BUILD_DIR"
+        fi
+        export PATH="$BISON_PREFIX/bin:$PATH"
+fi
+echo "当前使用: $(bison --version | head -n1)"
+# ==================== END: bison 版本检查 ====================
+
 wget -c https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/php/5.6/5640/php-5.6.40-github-buildconf.tar.gz -O php-5.6.40.tar.gz
 mkdir -p php-5.6.40
 tar xzf php-5.6.40.tar.gz -C php-5.6.40 --strip-components=1
@@ -39,8 +82,6 @@ CONFIG_CMD="./configure --prefix=$PREFIX --with-config-file-scan-dir=$PREFIX/etc
 if [ -f /usr/include/mcrypt.h ]; then
         CONFIG_CMD="$CONFIG_CMD --with-mcrypt"
 fi
-#'./configure' --prefix=$PREFIX --with-config-file-scan-dir=$PREFIX/etc/php.d --with-libdir=$LIB '--enable-fastcgi' '--with-mysql' '--with-mysqli' --with-pdo-mysql '--with-iconv-dir' '--with-freetype-dir' '--with-jpeg-dir' '--with-png-dir' '--with-zlib' '--with-libxml-dir=/usr/include/libxml2/libxml' '--enable-xml' '--disable-fileinfo' '--enable-magic-quotes' '--enable-safe-mode' '--enable-bcmath' '--enable-shmop' '--enable-sysvsem' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--enable-mbregex' '--enable-mbstring' '--enable-ftp' '--with-gd' '--enable-gd-native-ttf' '--with-openssl' '--enable-pcntl' '--enable-sockets' '--with-xmlrpc' '--enable-zip' '--enable-soap' '--with-pear' '--with-gettext' '--enable-calendar'
-#'./configure' --prefix=$PREFIX --with-config-file-scan-dir=$PREFIX/etc/php.d --with-libdir=$LIB '--enable-fastcgi' '--with-mysql' '--with-mysqli' --with-pdo-mysql '--with-iconv-dir' '--with-freetype-dir' '--with-jpeg-dir' '--with-png-dir' '--with-zlib' '--with-libxml-dir=/usr/include/libxml2/libxml' '--enable-xml' '--disable-fileinfo' '--enable-magic-quotes' '--enable-safe-mode' '--enable-bcmath' '--enable-shmop' '--enable-sysvsem' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--enable-mbregex' '--enable-mbstring' '--with-mcrypt' '--enable-ftp' '--with-gd' '--enable-gd-native-ttf' '--with-openssl' '--with-mhash' '--enable-pcntl' '--enable-sockets' '--with-xmlrpc' '--enable-zip' '--enable-soap' '--with-pear' '--with-gettext' '--enable-calendar'
 $CONFIG_CMD
 if test $? != 0; then
 	echo $CONFIG_CMD
@@ -48,6 +89,10 @@ if test $? != 0; then
 	exit 1
 fi
 make -j 4
+if test $? != 0; then
+	echo "make php error";
+	exit 1
+fi
 make install
 mkdir -p $PREFIX/etc/php.d
 if [ ! -f $PREFIX/php-templete.ini ]; then
