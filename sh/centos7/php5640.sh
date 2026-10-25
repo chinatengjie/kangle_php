@@ -13,7 +13,7 @@ if test `arch` = "x86_64"; then
         ZEND_ARCH="x86_64"
 fi
 
-wget -c https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/php/5.6/5640/php-5.6.40.tar.gz -O php-5.6.40.tar.gz
+wget -c https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/php/5.6/5640/php-5.6.40-github-buildconf.tar.gz -O php-5.6.40.tar.gz
 mkdir -p php-5.6.40
 tar xzf php-5.6.40.tar.gz -C php-5.6.40 --strip-components=1
 cd php-5.6.40
