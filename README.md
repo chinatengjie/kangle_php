@@ -4,6 +4,9 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://repo.huaweicloud.com/repositor
 
 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo
 
+curl -o /etc/yum.repos.d/CentOS-Base.repo https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/repo/CentOS7-Base-vault.repo
+
+
 yum clean all
 
 yum makecache
