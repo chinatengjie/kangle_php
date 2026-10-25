@@ -5,7 +5,9 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://repo.huaweicloud.com/repositor
 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo
 
 yum clean all
+
 yum makecache
+
 yum install wget nano -y
 
 
