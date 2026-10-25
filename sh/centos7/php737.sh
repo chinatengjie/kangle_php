@@ -27,7 +27,6 @@ fi
 
 # 改用官方 PHP 源码（GitHub tag），而不是 itzmx.com 镜像的 7.3.7
 wget -c https://github.com/php/php-src/archive/refs/tags/php-7.3.33.tar.gz -O php-7.3.33.tar.gz
-rm -rf php-7.3.33
 mkdir -p php-7.3.33
 tar xzf php-7.3.33.tar.gz -C php-7.3.33 --strip-components=1
 cd php-7.3.33
