@@ -4,7 +4,7 @@ yum -y install bzip2-devel libxml2-devel curl-devel db4-devel libjpeg-devel libp
 yum -y install mhash-devel openssl-devel
 yum -y install libtool-ltdl libtool-ltdl-devel
 yum -y install patch
-yum -y install gcc gcc-c++ make
+yum -y install gcc gcc-c++ make autoconf bison re2c
 PREFIX="/vhs/kangle/ext/tpl_php56401"
 ZEND_ARCH="i386"
 LIB="lib"
