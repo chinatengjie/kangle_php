@@ -13,7 +13,6 @@ if test `arch` = "x86_64"; then
         ZEND_ARCH="x86_64"
 fi
 
-# ==================== BEGIN: bison 版本检查（临时方案） ====================
 # PHP 5.6 的 GitHub 源码包没有预生成 parser，configure 需要 bison 2.4 ~ 2.7
 # CentOS 7 自带 bison 3.0 被 PHP 5.6 排除，这时临时编译 bison 2.7（只对本脚本生效）
 BISON_PREFIX="/usr/local/bison27"
