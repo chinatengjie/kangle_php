@@ -12,19 +12,22 @@ wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/e
 tar xzf tpl_php56401.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php71301.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php7371.tar.gz -C /vhs/kangle/ext
-如果之前编译过centos7 php56 71 只是修复漏洞版本 不带补丁的执行 
+如果之前编译过centos7 php56 71 只是修复漏洞版本 执行 下面安装运行库
 yum -y install epel-release
 yum -y install libmcrypt 
 或者执行
 tar xzf libmcrypt_so.tar.gz -C /lib64/
 ldconfig
-不用执行下面的
+不用执行下面的 下面是新机器快速安装
 centos7 php5.6
 
-yum -y install epel-release libmcrypt libtool-ltdl libjpeg-turbo
+yum -y install epel-release 
+yum -y install libmcrypt libtool-ltdl libjpeg-turbo
 
 centos7 php7.1
-yum -y install epel-release libmcrypt libtool-ltdl libjpeg-turbo
+
+yum -y install epel-release 
+yum -y install libmcrypt libtool-ltdl libjpeg-turbo
 yum -y install gcc gcc-c++ make autoconf automake libtool zlib-devel
 
 cd /root
@@ -38,7 +41,8 @@ cd ..
 
 centos7 php7.3
 
-yum -y install epel-release libmcrypt libtool-ltdl libjpeg-turbo
+yum -y install epel-release 
+yum -y install libmcrypt libtool-ltdl libjpeg-turbo
 yum -y install gcc gcc-c++ make autoconf automake libtool zlib-devel
 cd /root
 rm -rf libzip-1.3.2 libzip-1.3.2.tar.gz
