@@ -1,3 +1,7 @@
+centos6
+
+cat /etc/redhat-release
+
 md5sum: tpl_php56401: Is a directory
 839628c30893b7cfff593e0728b46448  tpl_php56401.tar.gz
 md5sum: tpl_php71301: Is a directory
@@ -16,6 +20,7 @@ wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/e
 tar xzf tpl_php56401.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php71301.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php7371.tar.gz -C /vhs/kangle/ext
+md5sum tpl_php*.tar.gz
 
 
 如果之前编译过不需要安装任何内容 直接使用

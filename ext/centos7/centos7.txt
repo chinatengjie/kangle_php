@@ -1,4 +1,6 @@
-centos6
+centos7
+
+cat /etc/redhat-release
 
 tpl_php56401.tar.gz 511de95f0bf1f1665f57850f2213bd36
 tpl_php7371.tar.gz 32b99e8d7925a83310b27e35ffa39bbf
