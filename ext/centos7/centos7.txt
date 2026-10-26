@@ -8,10 +8,7 @@ cat /etc/redhat-release
 561c4764e8bc6439491a4ac127663001  tpl_php71301.tar.gz
 1259d3a8de7161e00a7462d181584fb1  tpl_php7371.tar.gz
 
-------
-backup 因为php.ini没配置好重新打包
-tpl_php7371.tar.gz 32b99e8d7925a83310b27e35ffa39bbf
-tpl_php71301.tar.gz 460ab0d139217518dc0ea6b92b7f7b9b
+
 -------
 
 

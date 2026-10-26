@@ -1,0 +1,6 @@
+backup 因为php.ini没配置好重新打包
+md5sum: tpl_php71301: Is a directory
+29d933f16ac38d05029c414e369998d4  tpl_php71301.tar.gz
+md5sum: tpl_php7371: Is a directory
+c5dbdaf72bbcd99ba942eeea5b43d3f1  tpl_php7371.tar.gz
+----------------------------------------
