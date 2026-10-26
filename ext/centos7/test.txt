@@ -16,6 +16,8 @@ tar xzf tpl_php7371.tar.gz -C /vhs/kangle/ext
 yum -y install epel-release
 yum -y install libmcrypt 
 或者执行
+
+wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos7/libmcrypt_so.tar.gz
 tar xzf libmcrypt_so.tar.gz -C /lib64/
 ldconfig
 不用执行下面的 下面是新机器快速安装
