@@ -3,7 +3,6 @@ tpl_php7371.tar.gz 32b99e8d7925a83310b27e35ffa39bbf
 tpl_php71301.tar.gz 460ab0d139217518dc0ea6b92b7f7b9b
 mkdir -p /vhs/kangle/ext #测试生成目录
 
-
 yum install wget -y
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos7/tpl_php56401.tar.gz
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos7/tpl_php71301.tar.gz
@@ -11,7 +10,11 @@ wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/e
 tar xzf tpl_php56401.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php71301.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php7371.tar.gz -C /vhs/kangle/ext
-
+如果之前编译过centos7 php56 71 不带补丁的执行 yum -y install epel-release libmcrypt 
+或者执行
+tar xzf libmcrypt_so.tar.gz -C /lib64/
+ldconfig
+不用执行下面的
 centos7 php5.6
 
 yum -y install epel-release libmcrypt libtool-ltdl libjpeg-turbo
