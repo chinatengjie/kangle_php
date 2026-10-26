@@ -12,6 +12,8 @@ wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/e
 tar xzf tpl_php56401.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php71301.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php7371.tar.gz -C /vhs/kangle/ext
+md5sum tpl_php*.tar.gz
+
 如果之前编译过centos7 php56 71 只是修复漏洞版本 执行 下面安装运行库
 yum -y install epel-release
 yum -y install libmcrypt 
@@ -70,3 +72,5 @@ ldd /vhs/kangle/ext/tpl_php7371/bin/php | grep "not found"
 /vhs/kangle/ext/tpl_php56401/bin/php -v
 /vhs/kangle/ext/tpl_php71301/bin/php -v
 /vhs/kangle/ext/tpl_php7371/bin/php -v
+
+/vhs/kangle/bin/kangle -r
