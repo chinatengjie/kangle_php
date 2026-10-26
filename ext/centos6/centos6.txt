@@ -4,10 +4,15 @@ cat /etc/redhat-release
 
 md5sum: tpl_php56401: Is a directory
 839628c30893b7cfff593e0728b46448  tpl_php56401.tar.gz
+c6f073b652f1971e6b12a93dd8a91edd  tpl_php71301.tar.gz
+14e9ceae2014175b0e104f2eb19876d6  tpl_php7371.tar.gz
+------------------------------------------
+backup
 md5sum: tpl_php71301: Is a directory
 29d933f16ac38d05029c414e369998d4  tpl_php71301.tar.gz
 md5sum: tpl_php7371: Is a directory
 c5dbdaf72bbcd99ba942eeea5b43d3f1  tpl_php7371.tar.gz
+----------------------------------------
 [root@localhost ext]# 
 md5sum tp*
 
