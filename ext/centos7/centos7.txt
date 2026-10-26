@@ -19,21 +19,25 @@ md5sum tpl_php*.tar.gz
 如果之前编译过centos7 php56 71 只是修复漏洞版本 执行 下面安装运行库
 yum -y install epel-release
 yum -y install libmcrypt 
-或者执行
+或者执行 推荐下面的
 
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos7/libmcrypt_so.tar.gz
 tar xzf libmcrypt_so.tar.gz -C /lib64/
 ldconfig
 不用执行下面的 下面是新机器快速安装
+------------------------------------------------------------------------------------------------
+
 centos7 php5.6
 
 yum -y install epel-release 
 yum -y install libmcrypt libtool-ltdl libjpeg-turbo
+------------------------------------------------------------------------------------------------
 
 centos7 php7.1
 
 yum -y install epel-release 
 yum -y install libmcrypt libtool-ltdl libjpeg-turbo
+如果安装过5.6就不用执行上面的
 yum -y install gcc gcc-c++ make autoconf automake libtool zlib-devel
 
 cd /root
@@ -45,10 +49,13 @@ make -j 4
 make install
 cd ..
 
+------------------------------------------------------------------------------------------------
 centos7 php7.3
 
 yum -y install epel-release 
 yum -y install libmcrypt libtool-ltdl libjpeg-turbo
+如果安装过5.6就不用执行上面的
+
 yum -y install gcc gcc-c++ make autoconf automake libtool zlib-devel
 cd /root
 rm -rf libzip-1.3.2 libzip-1.3.2.tar.gz
@@ -62,6 +69,7 @@ make -j4
 make install
 cd ..
 
+------------------------------------------------------------------------------------------------
 
 
 
