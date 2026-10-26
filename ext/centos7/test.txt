@@ -1,0 +1,46 @@
+tpl_php56401.tar.gz 511de95f0bf1f1665f57850f2213bd36
+tpl_php7371.tar.gz 32b99e8d7925a83310b27e35ffa39bbf
+tpl_php71301.tar.gz 460ab0d139217518dc0ea6b92b7f7b9b
+mkdir -p /vhs/kangle/ext #测试生成目录
+
+
+yum install wget -y
+wget https://github.com/chinatengjie/kangle_php/blob/main/ext/centos7/tpl_php56401.tar.gz
+wget https://github.com/chinatengjie/kangle_php/blob/main/ext/centos7/tpl_php71301.tar.gz
+wget https://github.com/chinatengjie/kangle_php/blob/main/ext/centos7/tpl_php7371.tar.gz
+tar xzf tpl_php56401.tar.gz -C /vhs/kangle/ext
+tar xzf tpl_php71301.tar.gz -C /vhs/kangle/ext
+tar xzf tpl_php7371.tar.gz -C /vhs/kangle/ext
+
+centos7 php5.6
+
+yum -y install epel-release libmcrypt libtool-ltdl libjpeg-turbo
+
+centos7 php7.1
+yum -y install epel-release libmcrypt libtool-ltdl libjpeg-turbo
+yum -y install gcc gcc-c++ make autoconf automake libtool zlib-devel
+
+cd /root
+wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz
+tar -zxvf libmemcached-1.0.18.tar.gz
+cd libmemcached-1.0.18
+./configure
+make -j 4
+make install
+cd..
+
+centos7 php7.3
+
+yum -y install epel-release libmcrypt libtool-ltdl libjpeg-turbo
+yum -y install gcc gcc-c++ make autoconf automake libtool zlib-devel
+cd /root
+rm -rf libzip-1.3.2 libzip-1.3.2.tar.gz
+wget -c https://libzip.org/download/libzip-1.3.2.tar.gz
+# 如果上面链接失效，备用：
+# wget -c https://nih.at/libzip/libzip-1.3.2.tar.gz
+tar xzf libzip-1.3.2.tar.gz
+cd libzip-1.3.2
+./configure
+make -j4
+make install
+cd..
