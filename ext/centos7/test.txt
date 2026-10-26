@@ -44,3 +44,16 @@ cd libzip-1.3.2
 make -j4
 make install
 cd..
+
+
+
+
+
+
+ldd /vhs/kangle/ext/tpl_php56401/bin/php | grep "not found"
+ldd /vhs/kangle/ext/tpl_php71301/bin/php | grep "not found"
+ldd /vhs/kangle/ext/tpl_php7371/bin/php | grep "not found"
+
+/vhs/kangle/ext/tpl_php56401/bin/php -v
+/vhs/kangle/ext/tpl_php71301/bin/php -v
+/vhs/kangle/ext/tpl_php7371/bin/php -v
