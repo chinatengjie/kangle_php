@@ -5,9 +5,9 @@ mkdir -p /vhs/kangle/ext #测试生成目录
 
 
 yum install wget -y
-wget https://github.com/chinatengjie/kangle_php/raw/refs/heads/main/ext/centos7/tpl_php56401.tar.gz
-wget https://github.com/chinatengjie/kangle_php/raw/refs/heads/main/ext/centos7/tpl_php71301.tar.gz
-wget https://github.com/chinatengjie/kangle_php/raw/refs/heads/main/ext/centos7/tpl_php7371.tar.gz
+wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos7/tpl_php56401.tar.gz
+wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos7/tpl_php71301.tar.gz
+wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos7/tpl_php7371.tar.gz
 tar xzf tpl_php56401.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php71301.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php7371.tar.gz -C /vhs/kangle/ext
