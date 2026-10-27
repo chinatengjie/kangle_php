@@ -23,13 +23,14 @@ yum install wget nano -y
 
 minimal
 --------------------------------------------------------------------------
+```bash
 
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php5640.sh -O php5640.sh;sh php5640.sh
 
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php7130.sh -O php7130.sh;sh php7130.sh
 
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php737.sh -O php737.sh;sh php737.sh
-
+```
 
 采用php5640remicollet
 
