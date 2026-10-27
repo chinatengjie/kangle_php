@@ -1,4 +1,6 @@
 centos6
+
+
 echo -e "options timeout:1 attempts:1 rotate\nnameserver 8.8.8.8\nnameserver 114.114.114.114" >/etc/resolv.conf;
 
 rm -rf /etc/yum.repos.d/CentOS-Base.repo;curl -L -s https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/repo/CentOS6-Vault.repo -o /etc/yum.repos.d/CentOS6-Vault.repo
