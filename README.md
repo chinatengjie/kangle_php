@@ -1,3 +1,11 @@
+编译好的快速minimal安装包
+
+https://github.com/chinatengjie/kangle_php/blob/main/ext/centos7/minimal/centos7-minimal.txt
+
+https://github.com/chinatengjie/kangle_php/blob/main/ext/centos6/minimal/centos6-minimal.txt
+
+-----------------------------------------
+重新编译
 centos6
 
 
