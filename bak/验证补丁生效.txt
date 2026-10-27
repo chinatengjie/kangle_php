@@ -1,0 +1,19 @@
+/usr/local/php/bin/php 
+/vhs/kangle/ext/tpl_php56401/bin/php -d memory_limit=2M -r '$a=[]; while(true) $a[]=str_repeat("x",10000);' ; echo "exit=$?"
+/vhs/kangle/ext/tpl_php71301/bin/php -d memory_limit=2M -r '$a=[]; while(true) $a[]=str_repeat("x",10000);' ; echo "exit=$?"
+/vhs/kangle/ext/tpl_php7371/bin/php -d memory_limit=2M -r '$a=[]; while(true) $a[]=str_repeat("x",10000);' ; echo "exit=$?"
+
+
+nm /vhs/kangle/ext/tpl_php56401/bin/php 2>/dev/null | grep zend_mm_safe_error_ex
+nm /vhs/kangle/ext/tpl_php71301/bin/php 2>/dev/null | grep zend_mm_safe_error_ex
+nm /vhs/kangle/ext/tpl_php7371/bin/php 2>/dev/null | grep zend_mm_safe_error_ex
+
+上面是打了补丁返回1 没有补丁版本返回255
+/vhs/kangle/ext/tpl_php5640/bin/php -d memory_limit=2M -r '$a=[]; while(true) $a[]=str_repeat("x",10000);' ; echo "exit=$?"
+/vhs/kangle/ext/tpl_php7130/bin/php -d memory_limit=2M -r '$a=[]; while(true) $a[]=str_repeat("x",10000);' ; echo "exit=$?"
+/vhs/kangle/ext/tpl_php737/bin/php -d memory_limit=2M -r '$a=[]; while(true) $a[]=str_repeat("x",10000);' ; echo "exit=$?"
+
+
+nm /vhs/kangle/ext/tpl_php5640/bin/php 2>/dev/null | grep zend_mm_safe_error_ex
+nm /vhs/kangle/ext/tpl_php7130/bin/php 2>/dev/null | grep zend_mm_safe_error_ex
+nm /vhs/kangle/ext/tpl_php737/bin/php 2>/dev/null | grep zend_mm_safe_error_ex
