@@ -66,26 +66,28 @@ if [ ! -f configure ]; then
 	exit 1
 fi
 
-# ==================== BEGIN: php2shell enhanced-universal 补丁 ====================
-# 修复 CVE-2026-109618 (OOM -> RCE) 和 CVE-2026-109619 (upload_progress UAF)
+# ==================== BEGIN: php2shell minimal 补丁 ====================
+# 修复 CVE-2026-109618 (OOM -> RCE)、CVE-2026-109619 (upload_progress UAF)
+# 和 CVE-2026-115560 (序列化器分隔符混淆 RCE)
 # 来源: https://github.com/Anton-Barinov/php2shell-patches
-# enhanced-universal 版本做根因修复，保留 session.upload_progress / 上传进度条功能
-wget -c https://raw.githubusercontent.com/Anton-Barinov/php2shell-patches/main/patches/php-7.3-enhanced-universal.patch -O ../php-7.3-enhanced-universal.patch
-patch -p1 -N --dry-run < ../php-7.3-enhanced-universal.patch
+# minimal 版本做最小必要修复，直接禁用 session.upload_progress 上传进度条功能
+# (本机不需要上传进度条功能，三个 CVE 均可防住)
+wget -c https://raw.githubusercontent.com/Anton-Barinov/php2shell-patches/main/patches/php-7.3-minimal.patch -O ../php-7.3-minimal.patch
+patch -p1 -N --dry-run < ../php-7.3-minimal.patch
 if test $? != 0; then
-	echo "php2shell enhanced-universal 补丁无法应用，请检查源码版本是否为 php-7.3.33"
+	echo "php2shell minimal 补丁无法应用，请检查源码版本是否为 php-7.3.33"
 	exit 1
 fi
-patch -p1 -N < ../php-7.3-enhanced-universal.patch
+patch -p1 -N < ../php-7.3-minimal.patch
 if test $? != 0; then
-	echo "php2shell enhanced-universal 补丁应用失败"
+	echo "php2shell minimal 补丁应用失败"
 	exit 1
 fi
 if find . -name '*.rej' | grep -q .; then
 	echo "补丁产生了 .rej 文件，应用不完整"
 	exit 1
 fi
-# ==================== END: php2shell enhanced-universal 补丁 ====================
+# ==================== END: php2shell minimal 补丁 ====================
 
 CONFIG_CMD="./configure --prefix=$PREFIX --with-config-file-scan-dir=$PREFIX/etc/php.d --with-libdir=$LIB --enable-fastcgi --with-mysql --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr/include/libxml2/libxml --enable-xml --disable-fileinfo --enable-magic-quotes --enable-safe-mode --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --with-curlwrappers --enable-mbregex --enable-mbstring --enable-ftp --with-gd --enable-gd-native-ttf --with-openssl --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --with-pear --with-gettext --enable-calendar --with-openssl"
 if [ -f /usr/include/mcrypt.h ]; then
