@@ -1,0 +1,88 @@
+centos6
+
+cat /etc/redhat-release
+
+md5sum: tpl_php56401: Is a directory
+85487990d1f30ede10292f769cd85e87  tpl_php56401.tar.gz
+a2e4b31e118c31749b4705eafa8eb79a  tpl_php71301.tar.gz
+7c72256a3b716ae3c2d20821e999a058  tpl_php7371.tar.gz
+------------------------------------------
+
+md5sum tp*
+
+mkdir -p /vhs/kangle/ext #测试生成目录
+
+yum install wget -y
+------------------------------------------------------------------------------------------------
+
+wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos6/minimal/tpl_php56401.tar.gz
+wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos6/minimal/tpl_php71301.tar.gz
+wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos6/minimal/tpl_php7371.tar.gz
+tar xzf tpl_php56401.tar.gz -C /vhs/kangle/ext
+tar xzf tpl_php71301.tar.gz -C /vhs/kangle/ext
+tar xzf tpl_php7371.tar.gz -C /vhs/kangle/ext
+md5sum tpl_php*.tar.gz
+
+
+如果之前编译过不需要安装任何内容 直接使用
+------------------------------------------------------------------------------------------------
+
+
+centos6 php5.6
+
+yum -y install epel-release 
+yum -y install libmcrypt libtool-ltdl libjpeg-turbo freetype-devel
+------------------------------------------------------------------------------------------------
+
+centos6 php7.1
+
+yum -y install epel-release 
+yum -y install libmcrypt libtool-ltdl libjpeg-turbo freetype-devel
+如果安装过5.6就不用执行上面的
+
+yum -y install gcc gcc-c++ make autoconf automake libtool zlib-devel
+
+cd /root
+wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz
+tar -zxvf libmemcached-1.0.18.tar.gz
+cd libmemcached-1.0.18
+./configure
+make -j 4
+make install
+cd ..
+------------------------------------------------------------------------------------------------
+
+centos6 php7.3
+
+yum -y install epel-release 
+yum -y install libmcrypt libtool-ltdl libjpeg-turbo freetype-devel
+如果安装过5.6就不用执行上面的
+
+yum -y install gcc gcc-c++ make autoconf automake libtool zlib-devel
+cd /root
+rm -rf libzip-1.3.2 libzip-1.3.2.tar.gz
+wget -c https://libzip.org/download/libzip-1.3.2.tar.gz
+# 如果上面链接失效，备用：
+# wget -c https://nih.at/libzip/libzip-1.3.2.tar.gz
+tar xzf libzip-1.3.2.tar.gz
+cd libzip-1.3.2
+./configure
+make -j4
+make install
+cd ..
+
+7.1 libmemcached已经编译过就不需要重新编译 如过不需要71需要编译
+------------------------------------------------------------------------------------------------
+
+
+
+
+ldd /vhs/kangle/ext/tpl_php56401/bin/php | grep "not found"
+ldd /vhs/kangle/ext/tpl_php71301/bin/php | grep "not found"
+ldd /vhs/kangle/ext/tpl_php7371/bin/php | grep "not found"
+
+/vhs/kangle/ext/tpl_php56401/bin/php -v
+/vhs/kangle/ext/tpl_php71301/bin/php -v
+/vhs/kangle/ext/tpl_php7371/bin/php -v
+
+/vhs/kangle/bin/kangle -r

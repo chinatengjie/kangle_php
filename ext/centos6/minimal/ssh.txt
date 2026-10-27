@@ -1,0 +1,16 @@
+    1  rm -rf /etc/yum.repos.d/CentOS-Base.repo;curl -L -s https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/repo/CentOS6-Vault.repo -o /etc/yum.repos.d/CentOS6-Vault.repo
+    2  shutdown -h now
+    3  cat /etc/redhat-release
+    4  yum install wget nano -y
+    5  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php5640.sh -O php5640.sh;sh php5640.sh
+    6  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php7130.sh -O php7130.sh;sh php7130.sh
+    7  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php737.sh -O php737.sh;sh php737.sh
+    8  cd /vhs/kangle/ext
+    9  tar czf tpl_php56401.tar.gz tpl_php56401
+   10  tar czf tpl_php71301.tar.gz tpl_php71301
+   11  tar czf tpl_php7371.tar.gz tpl_php7371
+   12  ls -la tpl_php56401.tar.gz tpl_php71301.tar.gz tpl_php7371.tar.gz
+   13  md5sum tpl_php*.tar.gz
+   14  history
+   15  cat /etc/redhat-release
+   16  history
