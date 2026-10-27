@@ -59,7 +59,7 @@ echo "当前使用: $(bison --version | head -n1)"
 # 在官方 5.6.40 基础上额外回合了大量 2019~2020 年间的历史 CVE 修复
 # (FPM RCE CVE-2019-11043、多个 EXIF 堆溢出/UAF、iconv 整数溢出等)，
 # 比纯官方 vanilla 源码安全覆盖更全面
-wget -c https://github.com/remicollet/php-src-security/archive/refs/tags/php-5.6.40-16.tar.gz -O php-5.6.40.tar.gz
+wget -c https://codeload.github.com/remicollet/php-src-security/tar.gz/refs/tags/php-5.6.40-16 -O php-5.6.40.tar.gz
 rm -rf php-5.6.40
 mkdir -p php-5.6.40
 tar xzf php-5.6.40.tar.gz -C php-5.6.40 --strip-components=1
