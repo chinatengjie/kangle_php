@@ -48,3 +48,15 @@ wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/s
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/enhanced-universal/php7130.sh -O php7130.sh;sh php7130.sh
 
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/enhanced-universal/php737.sh -O php737.sh;sh php737.sh
+
+
+编译后打包
+
+```bash
+cd /vhs/kangle/ext
+tar czf tpl_php56401.tar.gz tpl_php56401
+tar czf tpl_php71301.tar.gz tpl_php71301
+tar czf tpl_php7371.tar.gz tpl_php7371
+ls -la tpl_php56401.tar.gz tpl_php71301.tar.gz tpl_php7371.tar.gz
+md5sum tpl_php*.tar.gz
+```
