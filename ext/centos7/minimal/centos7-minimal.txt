@@ -4,9 +4,10 @@ cat /etc/redhat-release
 
 
 
-572fa35ca002cd81dcfb77a6b925575a  tpl_php56401.tar.gz
-87af2ed421bab99f21cc4dca2fdf97f8  tpl_php71301.tar.gz
-a50253f64c0139758908db7bc0a85e93  tpl_php7371.tar.gz
+629fe92149a25384572b230cc73cec0e  tpl_php56401.tar.gz
+f545293192867bee5fdabb534fb46879  tpl_php71301.tar.gz
+0a2cdd7c6c3907952026a98d52ff84d4  tpl_php7371.tar.gz
+
 
 
 
