@@ -24,7 +24,7 @@ yum install wget nano -y
 minimal
 --------------------------------------------------------------------------
 
-wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/enhanced-universal/php5640.sh -O php5640.sh;sh php5640.sh
+wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php5640.sh -O php5640.sh;sh php5640.sh
 
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php7130.sh -O php7130.sh;sh php7130.sh
 
