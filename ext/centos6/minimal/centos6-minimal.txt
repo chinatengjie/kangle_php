@@ -18,10 +18,12 @@ yum install wget -y
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos6/minimal/tpl_php56401.tar.gz
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos6/minimal/tpl_php71301.tar.gz
 wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/ext/centos6/minimal/tpl_php7371.tar.gz
+md5sum tpl_php*.tar.gz
+
+
 tar xzf tpl_php56401.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php71301.tar.gz -C /vhs/kangle/ext
 tar xzf tpl_php7371.tar.gz -C /vhs/kangle/ext
-md5sum tpl_php*.tar.gz
 
 
 如果之前编译过不需要安装任何内容 直接使用
