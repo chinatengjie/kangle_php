@@ -1,19 +1,10 @@
-    1  ip add
-    2  yum install wget -y
-    3  passwd
-    4  echo -e "options timeout:1 attempts:1 rotate\nnameserver 8.8.8.8\nnameserver 114.114.114.114" >/etc/resolv.conf;
-    5  curl -o /etc/yum.repos.d/CentOS-Base.repo https://repo.huaweicloud.com/repository/conf/CentOS-7-reg.repo
-    6  yum clean all
-    7  yum makecache
-    8  yum install wget -y
-    9  cat /etc/redhat-release
-   10  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php5640.sh -O php5640.sh;sh php5640.sh
-   11  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php7130.sh -O php7130.sh;sh php7130.sh
-   12  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php737.sh -O php737.sh;sh php737.sh
-   13  cd /vhs/kangle/ext
-   14  tar czf tpl_php56401.tar.gz tpl_php56401
-   15  tar czf tpl_php71301.tar.gz tpl_php71301
-   16  tar czf tpl_php7371.tar.gz tpl_php7371
-   17  ls -la tpl_php56401.tar.gz tpl_php71301.tar.gz tpl_php7371.tar.gz
-   18  md5sum tpl_php*.tar.gz
-   19  history
+  118  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php5640.sh -O php5640.sh;sh php5640.sh
+  119  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php7130.sh -O php7130.sh;sh php7130.sh
+  120  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php737.sh -O php737.sh;sh php737.sh
+  121  cd /vhs/kangle/ext
+  122  tar czf tpl_php56401.tar.gz tpl_php56401
+  123  tar czf tpl_php71301.tar.gz tpl_php71301
+  124  tar czf tpl_php7371.tar.gz tpl_php7371
+  125  ls -la tpl_php56401.tar.gz tpl_php71301.tar.gz tpl_php7371.tar.gz
+  126  md5sum tpl_php*.tar.gz
+  127  history
