@@ -2,10 +2,10 @@ centos6
 
 cat /etc/redhat-release
 
-md5sum: tpl_php56401: Is a directory
-85487990d1f30ede10292f769cd85e87  tpl_php56401.tar.gz
-a2e4b31e118c31749b4705eafa8eb79a  tpl_php71301.tar.gz
-7c72256a3b716ae3c2d20821e999a058  tpl_php7371.tar.gz
+afb4199fa6f63bc13a52a446aa33e7d0  tpl_php56401.tar.gz
+1fd813c721cd858b3e2d6d66b8abcafb  tpl_php71301.tar.gz
+baf4f7c50413d2e885f3fe118c755927  tpl_php7371.tar.gz
+
 ------------------------------------------
 
 md5sum tp*

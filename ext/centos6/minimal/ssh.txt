@@ -1,16 +1,47 @@
     1  rm -rf /etc/yum.repos.d/CentOS-Base.repo;curl -L -s https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/repo/CentOS6-Vault.repo -o /etc/yum.repos.d/CentOS6-Vault.repo
     2  shutdown -h now
     3  cat /etc/redhat-release
-    4  yum install wget nano -y
-    5  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php5640.sh -O php5640.sh;sh php5640.sh
-    6  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php7130.sh -O php7130.sh;sh php7130.sh
-    7  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php737.sh -O php737.sh;sh php737.sh
-    8  cd /vhs/kangle/ext
-    9  tar czf tpl_php56401.tar.gz tpl_php56401
-   10  tar czf tpl_php71301.tar.gz tpl_php71301
-   11  tar czf tpl_php7371.tar.gz tpl_php7371
-   12  ls -la tpl_php56401.tar.gz tpl_php71301.tar.gz tpl_php7371.tar.gz
-   13  md5sum tpl_php*.tar.gz
-   14  history
-   15  cat /etc/redhat-release
-   16  history
+    4  history
+    5  yum install screen -y
+    6  screen -S kanglephp
+    7  rm -rf /etc/yum.repos.d/CentOS-Base.repo;curl -L -s http://github.itzmx.com/1265578519/mirrors/master/CentOS/CentOS6-Base-itzmx.repo -o /etc/yum.repos.d/CentOS6-Base-itzmx.repo
+    8  yum -y install wget
+    9  echo "timeout=120" >> /etc/yum.conf
+   10  yum -y update
+   11  yum -y install epel-release
+   12  chkconfig nscd off;service nscd stop;yum -y install dnsmasq;sed -i 's/#listen-address.*/listen-address=127.0.0.1/g' /etc/dnsmasq.conf;echo -e 'nameserver 127.0.0.1\nnameserver 8.8.8.8\nnameserver 2001:4860:4860::8888\nnameserver 2606:4700:4700::1111\nnameserver 1.1.1.1\nnameserver 114.114.114.114\nnameserver 119.29.29.29\noptions timeout:1 attempts:1 rotate' > /etc/resolv.conf;chkconfig dnsmasq on;service dnsmasq start
+   13  rm -rf /etc/yum.repos.d/CentOS-Base.repo
+   14  wget http://github.itzmx.com/1265578519/mirrors/master/CentOS/CentOS6-Base-itzmx.repo -O /etc/yum.repos.d/CentOS6-Base-itzmx.repo
+   15  rm -rf /etc/yum.repos.d/*pel.repo /etc/yum.repos.d/epel-testing.repo
+   16  wget http://github.itzmx.com/1265578519/mirrors/master/EPEL/epel.repo -O /etc/yum.repos.d/epel.repo
+   17  rpm -ivh http://github.itzmx.com/1265578519/repo/master/CentOS/mysql-community-release-el6-5.noarch.rpm
+   18  rm -rf /etc/yum.repos.d/mysql-community.repo /etc/yum.repos.d/mysql-community-source.repo
+   19  wget http://github.itzmx.com/1265578519/repo/master/CentOS/mysql-community.repo -O /etc/yum.repos.d/mysql-community.repo
+   20  yum clean all;yum makecache
+   21  yum -y install which file wget make automake gcc gcc-c++ pcre-devel zlib-devel openssl-devel sqlite-devel quota unzip bzip2 libaio-devel bind-utils nload iftop iotop htop lrzsz
+   22  ulimit -n 1048576
+   23  echo "* soft nofile 1048576" >> /etc/security/limits.conf
+   24  echo "* hard nofile 1048576" >> /etc/security/limits.conf
+   25  wget http://github.itzmx.com/1265578519/kangle/master/ent/e.sh -O e.sh;sh e.sh /vhs/kangle
+   26  wget http://github.itzmx.com/1265578519/kangle/master/kangle/easypanel/ep.sh -O ep.sh;sh ep.sh
+   27  yum -y install memcached php-pecl-memcache
+   28  yum -y install php-pecl-apc
+   29  rm -rf /etc/sysconfig/memcached
+   30  wget http://github.itzmx.com/1265578519/kangle/master/memcached/memcached -O /etc/sysconfig/memcached
+   31  service memcached start
+   32  chkconfig --level 2345 memcached on
+   33  yum -y install mysql mysql-server
+   34  rm -rf /etc/my.cnf
+   35  wget http://github.itzmx.com/1265578519/kangle/master/mysql/5.6/my.cnf -O /etc/my.cnf
+   36  service mysqld restart
+   37  shutdown -h now
+   38  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php5640.sh -O php5640.sh;sh php5640.sh
+   39  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php7130.sh -O php7130.sh;sh php7130.sh
+   40  wget https://raw.githubusercontent.com/chinatengjie/kangle_php/refs/heads/main/sh/minimal/php737.sh -O php737.sh;sh php737.sh
+   41  cd /vhs/kangle/ext
+   42  tar czf tpl_php56401.tar.gz tpl_php56401
+   43  tar czf tpl_php71301.tar.gz tpl_php71301
+   44  tar czf tpl_php7371.tar.gz tpl_php7371
+   45  ls -la tpl_php56401.tar.gz tpl_php71301.tar.gz tpl_php7371.tar.gz
+   46  md5sum tpl_php*.tar.gz
+   47  history
