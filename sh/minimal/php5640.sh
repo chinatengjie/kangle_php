@@ -138,3 +138,4 @@ make -j 4
 make install
 cd ..
 rm -rf /tmp/*
+echo 'ok'
