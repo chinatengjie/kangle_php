@@ -155,4 +155,3 @@ make -j 4
 make install
 cd ..
 rm -rf /tmp/*
-/vhs/kangle/bin/kangle -r
